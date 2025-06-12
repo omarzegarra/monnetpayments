@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: coplazoscommand
+  main:
+    banner-mode: "off"
+  jmx:
+    enabled: true
+  jpa:
+    show-sql: false
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DS_BD_URL:jdbc:postgresql://localhost:5432/fohpd10}
+    username: ${EPASPAGOS_USR:ohzegarra}
+    password: ${EPASPAGOS_PWD:123456}
+    type: com.zaxxer.hikari.HikariDataSource
+
+server:
+  port: 8080
+  servlet:
+    context-path: /coplazoscommand
+  session:
+    timeout: 60s
+
+
+management:
+  health:
+    rabbit:
+      enabled: false
