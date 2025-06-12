@@ -1,0 +1,90 @@
+
+CREATE TABLE IF NOT EXISTS epago.trx_pase_cuotas
+(
+    id integer NOT NULL,
+    id_cabecera integer NOT NULL,
+    codigo_transaccion text COLLATE pg_catalog."default" NOT NULL,
+    nuevo_codigo_transaccion text COLLATE pg_catalog."default",
+    fecha_transaccion date NOT NULL,
+    monto numeric(8,2) NOT NULL,
+    codigo_estado integer NOT NULL,
+    estado_descripcion text COLLATE pg_catalog."default" NOT NULL,
+    cuotas integer NOT NULL,
+    valor_cuota numeric(8,2) NOT NULL,
+    tasa numeric(8,2) NOT NULL,
+    diferido integer,
+    codigo_autorizacion text COLLATE pg_catalog."default",
+    fecha_registro date NOT NULL,
+    fecha_actualizacion date NOT NULL,
+    usuario_actualizacion text COLLATE pg_catalog."default" NOT NULL,
+    usuario_registro text COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT trx_pase_cuotas_pkey PRIMARY KEY (id),
+    CONSTRAINT trx_pase_cuotas_id_cabecera_fkey FOREIGN KEY (id_cabecera)
+        REFERENCES etarjeta.cabecera_pase_cuotas (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS epago.trx_pase_cuotas
+    OWNER to ozegarra;
+
+REVOKE ALL ON TABLE etarjeta.trx_pase_cuotas FROM ozegarra;
+
+GRANT ALL ON TABLE etarjeta.trx_pase_cuotas TO ozegarra;
+
+GRANT DELETE, UPDATE, INSERT, TRUNCATE, SELECT ON TABLE epago.trx_pase_cuotas TO ozegarra;
+
+COMMENT ON COLUMN epago.trx_pase_cuotas.codigo_estado
+    IS '0 = PENDIENTE; 1 = PROCESANDO; 2 = PROCESADO; 3 = PARA INVESTIGAR; 4 = ERROR; 5 = ERROR AL ENVIAR PROCESADOR';
+
+COMMENT ON COLUMN epago.trx_pase_cuotas.estado_descripcion
+    IS '0 = PENDIENTE; 1 = PROCESANDO; 2 = PROCESADO; 3 = PARA INVESTIGAR; 4 = ERROR; 5 = ERROR AL ENVIAR PROCESADOR';
+
+-----------------------------------------------------------------------------------------------------
+
+
+
+CREATE TABLE IF NOT EXISTS epago.trx_pase_cuotas
+(
+    id integer NOT NULL,
+    id_cabecera integer NOT NULL,
+    codigo_transaccion text COLLATE pg_catalog."default" NOT NULL,
+    nuevo_codigo_transaccion text COLLATE pg_catalog."default",
+    fecha_transaccion date NOT NULL,
+    monto numeric(8,2) NOT NULL,
+    codigo_estado integer NOT NULL,
+    estado_descripcion text COLLATE pg_catalog."default" NOT NULL,
+    cuotas integer NOT NULL,
+    valor_cuota numeric(8,2) NOT NULL,
+    tasa numeric(8,2) NOT NULL,
+    diferido integer,
+    codigo_autorizacion text COLLATE pg_catalog."default",
+    fecha_registro date NOT NULL,
+    fecha_actualizacion date NOT NULL,
+    usuario_actualizacion text COLLATE pg_catalog."default" NOT NULL,
+    usuario_registro text COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT trx_pase_cuotas_pkey PRIMARY KEY (id),
+    CONSTRAINT trx_pase_cuotas_id_cabecera_fkey FOREIGN KEY (id_cabecera)
+        REFERENCES etarjeta.cabecera_pase_cuotas (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS epago.trx_pase_cuotas
+    OWNER to ozegarra;
+
+REVOKE ALL ON TABLE epago.trx_pase_cuotas FROM ozegarra;
+
+GRANT ALL ON TABLE epago.trx_pase_cuotas TO ozegarra;
+
+GRANT DELETE, UPDATE, INSERT, TRUNCATE, SELECT ON TABLE epago.trx_pase_cuotas TO ozegarra;
+
+COMMENT ON COLUMN epago.trx_pase_cuotas.codigo_estado
+    IS '0 = PENDIENTE; 1 = PROCESANDO; 2 = PROCESADO; 3 = PARA INVESTIGAR; 4 = ERROR; 5 = ERROR AL ENVIAR PROCESADOR';
+
+COMMENT ON COLUMN epago.trx_pase_cuotas.estado_descripcion
+    IS '0 = PENDIENTE; 1 = PROCESANDO; 2 = PROCESADO; 3 = PARA INVESTIGAR; 4 = ERROR; 5 = ERROR AL ENVIAR PROCESADOR';
